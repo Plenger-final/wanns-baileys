@@ -1,6 +1,5 @@
 <div align="center" id="top">
 
-<img src="./Media/wanns-logo.png" width="140" alt="Wanns logo" />
 
 # wanns-baileys
 

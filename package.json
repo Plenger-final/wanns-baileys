@@ -56,7 +56,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Plenger-final/Wanns.git"
+    "url": "git+https://github.com/Plenger-final/wanns-baileys.git"
   },
   "files": [
     "lib/**/*",
@@ -116,7 +116,7 @@
     "whatsapp-web",
     "whatsapp-web-baileys"
   ],
-  "homepage": "https://github.com/Plenger-final/Wanns#readme",
+  "homepage": "https://github.com/Plenger-final/wanns-baileys#readme",
   "author": "Wanns",
   "license": "MIT",
   "dependencies": {
@@ -235,6 +235,6 @@
     "typescript": "6.0.x"
   },
   "bugs": {
-    "url": "https://github.com/Plenger-final/Wanns/issues"
+    "url": "https://github.com/Plenger-final/wanns-baileys/issues"
   }
 }
