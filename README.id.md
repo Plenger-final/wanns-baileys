@@ -1,3 +1,34 @@
+
+## ✨ Fitur Tambahan Eksklusif v1.2.0 (Bahasa Indonesia)
+- **Custom Pairing Code Bawaan:** Masukkan `phoneNumber` dan `pairingCode` (8 karakter) langsung di konfigurasi `makeWASocket` atau `makeWASocketAuto`.
+- **Album Media Grid (`sock.sendAlbum`):** Mengirim 2–10 foto/video sekaligus dalam satu gelembung album.
+- **Pemutar Audio Lengkap (`sock.sendRichAudio`):** Mengirim lagu/audio beserta cover besar, judul, dan nama artis.
+- **Stiker Animasi Lottie (`sock.sendLottieSticker`):** Mengirim stiker animasi vektor JSON/TGS asli WhatsApp (`isLottie: true`).
+- **Lokasi Live Real-Time (`sock.sendLiveLocation`):** Mengirim titik lokasi bergerak dengan durasi aktif.
+- **Persetujuan Grup Massal (`sock.groupRequestParticipantsUpdateAll`):** Terima atau tolak semua permintaan masuk grup sekaligus.
+
+```javascript
+import { makeWASocketAuto, useMultiFileAuthState } from "wanns-baileys";
+
+const { state, saveCreds } = await useMultiFileAuthState("./sesi");
+const sock = await makeWASocketAuto({
+    auth: state,
+    phoneNumber: "6281234567890",
+    pairingCode: "WANNS123"
+});
+sock.ev.on("creds.update", saveCreds);
+
+await sock.sendAlbum(jid, [
+    { image: { url: "https://example.com" }, caption: "Foto 1" },
+    { image: { url: "https://example.com" }, caption: "Foto 2" }
+]);
+await sock.sendRichAudio(jid, { url: "./lagu.mp3" }, {
+    title: "Judul Lagu",
+    artist: "Wanns Music",
+    cover: "https://example.com"
+});
+```
+
 <div align="center" id="top">
 
 
