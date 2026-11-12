@@ -21,3 +21,5 @@ export { makeWASocket };
 export { makeWASocketAuto } from "./Socket/index.js";
 export default makeWASocket;
 import makeWASocket from './Socket/index.js';
+
+export * from "./Utils/wanns-extras.js";
