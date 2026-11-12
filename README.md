@@ -1,42 +1,7 @@
-# 🚀 wanns-baileys (Full Documentation)
+<details>
+<summary>🇺🇸 <b>Click here to read the English Documentation (Klik untuk Bahasa Inggris)</b></summary>
 
-**Pilih Bahasa / Choose Language:**
-- [🇺🇸 1. Full English Documentation](#-1-full-english-documentation)
-- [🇮🇩 2. Dokumentasi Lengkap Bahasa Indonesia](#-2-dokumentasi-lengkap-bahasa-indonesia)
-
----
-
-# 🇺🇸 1. Full English Documentation
-
-## ✨ Exclusive v1.2.0 Additions (English)
-- **Built-in Pairing Code:** Configure `phoneNumber` and `pairingCode` (8 chars) directly inside `makeWASocket` or `makeWASocketAuto`.
-- **Native Album Grid (`sock.sendAlbum`):** Send 2–10 photos/videos in one album bubble.
-- **Rich Audio Player (`sock.sendRichAudio`):** Send audio/music with large cover artwork, title, and artist metadata.
-- **Native Lottie Sticker (`sock.sendLottieSticker`):** Send animated JSON/TGS vector stickers (`isLottie: true`).
-- **Real-Time Live Location (`sock.sendLiveLocation`):** Send moving live location pins with custom duration.
-- **Batch Group Approval (`sock.groupRequestParticipantsUpdateAll`):** Approve or reject all pending join requests at once.
-
-```javascript
-import { makeWASocketAuto, useMultiFileAuthState } from "wanns-baileys";
-
-const { state, saveCreds } = await useMultiFileAuthState("./session");
-const sock = await makeWASocketAuto({
-    auth: state,
-    phoneNumber: "6281234567890",
-    pairingCode: "WANNS123"
-});
-sock.ev.on("creds.update", saveCreds);
-
-await sock.sendAlbum(jid, [
-    { image: { url: "https://example.com" }, caption: "Photo 1" },
-    { image: { url: "https://example.com" }, caption: "Photo 2" }
-]);
-await sock.sendRichAudio(jid, { url: "./song.mp3" }, {
-    title: "Song Title",
-    artist: "Wanns Music",
-    cover: "https://example.com"
-});
-```
+<br>
 
 <div align="center" id="top">
 
@@ -2629,9 +2594,93 @@ Thanks for visiting, bye 👋
 </div>
 
 
+</details>
+
 ---
 
-# 🇮🇩 2. Dokumentasi Lengkap Bahasa Indonesia
+# 🚀 wanns-baileys (Dokumentasi Bahasa Indonesia)
+
+> 📢 **Saluran WhatsApp Resmi:** [Gabung Saluran Wanns-Baileys](https://whatsapp.com/channel/0029VbDRs9EEVccGV50sL42p)
+
+### 📦 Instalasi Cepat
+Pastikan `package.json` proyek Anda sudah memakai `"type": "module"`:
+```bash
+npm install github:Plenger-final/wanns-baileys
+```
+
+
+## ✨ Fitur Baru & Contoh Kode Lengkap (v1.2.1)
+
+### 1. Custom Pairing Code Bawaan, Auto Reconnect & Auto-Follow Saluran
+Cukup masukkan `phoneNumber` dan `pairingCode` (8 karakter) langsung di dalam `makeWASocketAuto`. Bot otomatis menyambung ulang saat terputus dan mengikuti saluran resmi secara otomatis:
+```javascript
+import { makeWASocketAuto, useMultiFileAuthState, autoReconnect } from "wanns-baileys";
+
+const { state, saveCreds } = await useMultiFileAuthState("./sesi");
+
+const sock = await makeWASocketAuto({
+    auth: state,
+    phoneNumber: "6281234567890",
+    pairingCode: "WANNS123",
+    onPairingCode: (code) => console.log("Kode Pairing:", code),
+    autoFollowChannels: ["0029VbDRs9EEVccGV50sL42p"]
+});
+
+sock.ev.on("creds.update", saveCreds);
+autoReconnect(sock, () => startBot());
+```
+
+### 2. Album Media Grid (`sock.sendAlbum`)
+Mengirim 2 hingga 10 foto/video sekaligus dalam satu tampilan gelembung album:
+```javascript
+await sock.sendAlbum(jid, [
+    { image: { url: "https://example.com" }, caption: "Foto Pertama" },
+    { image: { url: "https://example.com" }, caption: "Foto Kedua" },
+    { video: { url: "https://example.com" }, caption: "Video Ketiga" }
+], { quoted: msg });
+```
+
+### 3. Pemutar Audio / Lagu dengan Cover (`sock.sendRichAudio`)
+Mengirim file audio/musik lengkap dengan gambar cover besar, judul lagu, dan nama artis:
+```javascript
+await sock.sendRichAudio(jid, { url: "./lagu.mp3" }, {
+    title: "Judul Lagu Keren",
+    artist: "Wanns Music",
+    cover: "https://example.com",
+    ptt: false,
+    quoted: msg
+});
+```
+
+### 4. Stiker Animasi Lottie (`sock.sendLottieSticker`)
+Mengirim stiker animasi vektor JSON/TGS asli WhatsApp yang ringan dan jernih:
+```javascript
+import fs from "fs";
+
+const lottieBuffer = fs.readFileSync("./stiker-animasi.json");
+await sock.sendLottieSticker(jid, lottieBuffer, { quoted: msg });
+```
+
+### 5. Lokasi Live Real-Time (`sock.sendLiveLocation`)
+Mengirim titik lokasi langsung bergerak (*live location*) lengkap dengan durasi aktif (dalam detik):
+```javascript
+await sock.sendLiveLocation(jid, -7.2575, 112.7521, {
+    caption: "Lokasi Live Bot Saat Ini",
+    durationSec: 900,
+    quoted: msg
+});
+```
+
+### 6. Persetujuan Anggota Grup Massal (`sock.groupRequestParticipantsUpdateAll`)
+Menerima (`"approve"`) atau menolak (`"reject"`) seluruh permintaan masuk grup yang tertunda sekaligus:
+```javascript
+const hasil = await sock.groupRequestParticipantsUpdateAll(groupJid, "approve");
+console.log(`Berhasil memproses ${hasil.processed} anggota.`);
+```
+
+---
+
+
 
 ## ✨ Fitur Tambahan Eksklusif v1.2.0 (Bahasa Indonesia)
 - **Custom Pairing Code Bawaan:** Masukkan `phoneNumber` dan `pairingCode` (8 karakter) langsung di konfigurasi `makeWASocket` atau `makeWASocketAuto`.
@@ -5183,64 +5232,3 @@ Terima kasih sudah mampir, sampai jumpa 👋
 
 </div>
 
-
-
-## 💡 Additional Feature Examples (v1.2.1)
-
-### 1. Built-in Custom Pairing Code & Auto-Follow Channel
-```javascript
-import { makeWASocketAuto, useMultiFileAuthState, autoReconnect } from "wanns-baileys";
-
-const { state, saveCreds } = await useMultiFileAuthState("./sesi");
-
-const sock = await makeWASocketAuto({
-    auth: state,
-    phoneNumber: "6281234567890",
-    pairingCode: "WANNS123",
-    onPairingCode: (code) => console.log("Kode Pairing:", code),
-    autoFollowChannels: ["0029VbDRs9EEVccGV50sL42p"]
-});
-
-sock.ev.on("creds.update", saveCreds);
-autoReconnect(sock, () => startBot());
-```
-
-### 2. Native Album Grid (`sock.sendAlbum`)
-```javascript
-await sock.sendAlbum(jid, [
-    { image: { url: "https://example.com" }, caption: "Foto 1" },
-    { image: { url: "https://example.com" }, caption: "Foto 2" }
-]);
-```
-
-### 3. Rich Audio Player (`sock.sendRichAudio`)
-```javascript
-await sock.sendRichAudio(jid, { url: "./lagu.mp3" }, {
-    title: "Judul Lagu",
-    artist: "Wanns Music",
-    cover: "https://example.com"
-});
-```
-
-### 4. Native Lottie Sticker (`sock.sendLottieSticker`)
-```javascript
-import fs from "fs";
-const lottieBuffer = fs.readFileSync("./sticker.json");
-await sock.sendLottieSticker(jid, lottieBuffer);
-```
-
-### 5. Real-Time Live Location (`sock.sendLiveLocation`)
-```javascript
-await sock.sendLiveLocation(jid, -7.2575, 112.7521, {
-    caption: "Lokasi Live Bot",
-    durationSec: 900
-});
-```
-
-### 6. Batch Group Join Approval (`sock.groupRequestParticipantsUpdateAll`)
-```javascript
-// Terima semua permintaan masuk grup sekaligus ("approve" atau "reject")
-await sock.groupRequestParticipantsUpdateAll(groupJid, "approve");
-```
-
----
