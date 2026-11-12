@@ -57,7 +57,7 @@ await sock.sendRichAudio(jid, { url: "./lagu.mp3" }, {
 </p>
 
 <p>
-<a href="https://whatsapp.com/channel/0029VbEVFrILtOjAOu4FXa3r"><img src="https://img.shields.io/badge/Ikuti%20di%20WhatsApp-Channel%20Wanns-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="Channel WhatsApp Wanns" /></a>
+<a href="https://whatsapp.com/channel/0029VbDRs9EEVccGV50sL42p"><img src="https://img.shields.io/badge/Ikuti%20di%20WhatsApp-Channel%20Wanns-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="Channel WhatsApp Wanns" /></a>
 </p>
 
 <h4>
