@@ -2436,12 +2436,12 @@ Banner adalah bagian dari identitas paket ini dan tampil sekali per proses. Dira
 Sejak v2.4.3 banner sekaligus jadi kartu kesehatan startup — wordmark gradien plus panel info berbingkai: versi paket, versi WA Web bawaan, node/platform/pid, dan tagline harian yang berganti:
 
 ```text
-       ██╗   █████╗   ██████╗
-       ██║  ██╔══██╗  ██╔══██╗
-       ██║  ███████║  ██████╔╝
-  ██   ██║  ██╔══██║  ██╔═══╝
-  ╚█████╔╝  ██║  ██║  ██║
-   ╚════╝   ╚═╝  ╚═╝  ╚═╝
+██╗    ██╗ █████╗ ███╗   ██╗███╗   ██╗███████╗
+██║    ██║██╔══██╗████╗  ██║████╗  ██║██╔════╝
+██║ █╗ ██║███████║██╔██╗ ██║██╔██╗ ██║███████╗
+██║███╗██║██╔══██║██║╚██╗██║██║╚██╗██║╚════██║
+╚███╔███╔╝██║  ██║██║ ╚████║██║ ╚████║███████║
+ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝
 
   ╭────────────────────────────────────────────────────────────────╮
   │ wanns-baileys v2.4.5   ● typed · extended · battle-tested    │

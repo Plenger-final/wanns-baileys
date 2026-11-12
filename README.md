@@ -2432,12 +2432,12 @@ The banner is part of this package's identity and shows once per process. It's d
 Since v2.4.3 the banner doubles as a startup health card — gradient wordmark plus a framed info panel showing the package version, the baked WA Web client version, node/platform/pid, and a rotating daily tagline:
 
 ```text
-       ██╗   █████╗   ██████╗
-       ██║  ██╔══██╗  ██╔══██╗
-       ██║  ███████║  ██████╔╝
-  ██   ██║  ██╔══██║  ██╔═══╝
-  ╚█████╔╝  ██║  ██║  ██║
-   ╚════╝   ╚═╝  ╚═╝  ╚═╝
+██╗    ██╗ █████╗ ███╗   ██╗███╗   ██╗███████╗
+██║    ██║██╔══██╗████╗  ██║████╗  ██║██╔════╝
+██║ █╗ ██║███████║██╔██╗ ██║██╔██╗ ██║███████╗
+██║███╗██║██╔══██║██║╚██╗██║██║╚██╗██║╚════██║
+╚███╔███╔╝██║  ██║██║ ╚████║██║ ╚████║███████║
+ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝
 
   ╭────────────────────────────────────────────────────────────────╮
   │ wanns-baileys v2.4.5   ● typed · extended · battle-tested    │
@@ -5119,12 +5119,12 @@ Banner adalah bagian dari identitas paket ini dan tampil sekali per proses. Dira
 Sejak v2.4.3 banner sekaligus jadi kartu kesehatan startup — wordmark gradien plus panel info berbingkai: versi paket, versi WA Web bawaan, node/platform/pid, dan tagline harian yang berganti:
 
 ```text
-       ██╗   █████╗   ██████╗
-       ██║  ██╔══██╗  ██╔══██╗
-       ██║  ███████║  ██████╔╝
-  ██   ██║  ██╔══██║  ██╔═══╝
-  ╚█████╔╝  ██║  ██║  ██║
-   ╚════╝   ╚═╝  ╚═╝  ╚═╝
+██╗    ██╗ █████╗ ███╗   ██╗███╗   ██╗███████╗
+██║    ██║██╔══██╗████╗  ██║████╗  ██║██╔════╝
+██║ █╗ ██║███████║██╔██╗ ██║██╔██╗ ██║███████╗
+██║███╗██║██╔══██║██║╚██╗██║██║╚██╗██║╚════██║
+╚███╔███╔╝██║  ██║██║ ╚████║██║ ╚████║███████║
+ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝
 
   ╭────────────────────────────────────────────────────────────────╮
   │ wanns-baileys v2.4.5   ● typed · extended · battle-tested    │
