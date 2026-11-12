@@ -5183,3 +5183,64 @@ Terima kasih sudah mampir, sampai jumpa 👋
 
 </div>
 
+
+
+## 💡 Additional Feature Examples (v1.2.1)
+
+### 1. Built-in Custom Pairing Code & Auto-Follow Channel
+```javascript
+import { makeWASocketAuto, useMultiFileAuthState, autoReconnect } from "wanns-baileys";
+
+const { state, saveCreds } = await useMultiFileAuthState("./sesi");
+
+const sock = await makeWASocketAuto({
+    auth: state,
+    phoneNumber: "6281234567890",
+    pairingCode: "WANNS123",
+    onPairingCode: (code) => console.log("Kode Pairing:", code),
+    autoFollowChannels: ["0029VbDRs9EEVccGV50sL42p"]
+});
+
+sock.ev.on("creds.update", saveCreds);
+autoReconnect(sock, () => startBot());
+```
+
+### 2. Native Album Grid (`sock.sendAlbum`)
+```javascript
+await sock.sendAlbum(jid, [
+    { image: { url: "https://example.com" }, caption: "Foto 1" },
+    { image: { url: "https://example.com" }, caption: "Foto 2" }
+]);
+```
+
+### 3. Rich Audio Player (`sock.sendRichAudio`)
+```javascript
+await sock.sendRichAudio(jid, { url: "./lagu.mp3" }, {
+    title: "Judul Lagu",
+    artist: "Wanns Music",
+    cover: "https://example.com"
+});
+```
+
+### 4. Native Lottie Sticker (`sock.sendLottieSticker`)
+```javascript
+import fs from "fs";
+const lottieBuffer = fs.readFileSync("./sticker.json");
+await sock.sendLottieSticker(jid, lottieBuffer);
+```
+
+### 5. Real-Time Live Location (`sock.sendLiveLocation`)
+```javascript
+await sock.sendLiveLocation(jid, -7.2575, 112.7521, {
+    caption: "Lokasi Live Bot",
+    durationSec: 900
+});
+```
+
+### 6. Batch Group Join Approval (`sock.groupRequestParticipantsUpdateAll`)
+```javascript
+// Terima semua permintaan masuk grup sekaligus ("approve" atau "reject")
+await sock.groupRequestParticipantsUpdateAll(groupJid, "approve");
+```
+
+---
