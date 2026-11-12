@@ -351,7 +351,7 @@ npm install wanns-baileys
 Directly from GitHub:
 
 ```bash
-npm install github:Plenger-final/wanns-baileys
+npm install wanns-baileys
 ```
 
 > Requires **Node.js 20+** — enforced at import time with a clear error (no install scripts: this package deliberately ships **zero** `preinstall`/`postinstall` hooks, so `npm ci --ignore-scripts` and strict supply-chain policies work out of the box).
@@ -2605,32 +2605,79 @@ Thanks for visiting, bye 👋
 ### 📦 Instalasi Cepat
 Pastikan `package.json` proyek Anda sudah memakai `"type": "module"`:
 ```bash
-npm install github:Plenger-final/wanns-baileys
+npm install wanns-baileys
 ```
 
 
-## ✨ Fitur Baru & Contoh Kode Lengkap (v1.2.1)
+## ✨ Fitur Terbaru & Contoh Kode Lengkap (v1.3.1)
 
-### 1. Custom Pairing Code Bawaan, Auto Reconnect & Auto-Follow Saluran
-Cukup masukkan `phoneNumber` dan `pairingCode` (8 karakter) langsung di dalam `makeWASocketAuto`. Bot otomatis menyambung ulang saat terputus dan mengikuti saluran resmi secara otomatis:
+Seluruh fitur tambahan kini disusun secara modular dalam berkas terpisah di dalam `lib/Utils/` (`album-message.js`, `rich-audio.js`, `lottie-sticker.js`, `live-location.js`, `status-mention.js`, `quoted-channel.js`, dan `socket-addons.js`).
+
+### 1. Konfigurasi Soket Lengkap (Pairing Code, Auto Reconnect, Auto-Follow, Anti-Call & Auto-Clean)
+Cukup atur seluruh fitur otomatis langsung di dalam `makeWASocketAuto`:
 ```javascript
 import { makeWASocketAuto, useMultiFileAuthState, autoReconnect } from "wanns-baileys";
 
-const { state, saveCreds } = await useMultiFileAuthState("./sesi");
+async function startBot() {
+    const { state, saveCreds } = await useMultiFileAuthState("./sesi");
 
-const sock = await makeWASocketAuto({
-    auth: state,
-    phoneNumber: "6281234567890",
-    pairingCode: "WANNS123",
-    onPairingCode: (code) => console.log("Kode Pairing:", code),
-    autoFollowChannels: ["0029VbDRs9EEVccGV50sL42p"]
-});
+    const sock = await makeWASocketAuto({
+        auth: state,
+        phoneNumber: "6281234567890",                      // Nomor bot
+        pairingCode: "WANNS123",                           // Custom pairing code 8 karakter
+        onPairingCode: (code) => console.log("Kode Pairing:", code),
+        autoFollowChannels: ["0029VbDRs9EEVccGV50sL42p"],  // Auto-follow saluran resmi
+        antiCall: "⚠️ Bot otomatis menolak panggilan!",   // Auto-reject telepon & VC
+        autoCleanSession: "./sesi",                        // Auto-hapus sampah sesi tiap 30 menit
+        autoSerialize: true                                // Aktifkan msg.text & msg.reply
+    });
 
-sock.ev.on("creds.update", saveCreds);
-autoReconnect(sock, () => startBot());
+    sock.ev.on("creds.update", saveCreds);
+    autoReconnect(sock, startBot);
+}
+
+startBot();
 ```
 
-### 2. Album Media Grid (`sock.sendAlbum`)
+### 2. Auto-Serialize Pesan Masuk (`msg.text`, `msg.sender`, `msg.reply`)
+Tidak perlu lagi menulis kode ekstraksi pesan yang panjang di dalam `messages.upsert`:
+```javascript
+sock.ev.on("messages.upsert", async ({ messages }) => {
+    const msg = messages;
+    if (!msg.message || msg.key.fromMe) return;
+
+    if (msg.text === ".ping") {
+        await msg.reply("Pong! Bot aktif dan merespons cepat.");
+    }
+});
+```
+
+### 3. Kirim Status / Story dengan Mention Grup & User (`sock.sendStatusMention`)
+Membuat Status WhatsApp (`status@broadcast`) yang langsung menandai seluruh anggota grup atau pengguna tertentu:
+```javascript
+await sock.sendStatusMention(
+    { text: "Info update terbaru dari Wanns-Baileys!" },
+    [groupJid],
+    { backgroundColor: "#1b1e23", font: 1 }
+);
+```
+
+### 4. Kirim Pesan Kutipan Saluran Terverifikasi (`sock.sendQuotedChannel`)
+Mengirim balasan pesan dengan tampilan kutipan saluran resmi (*verified newsletter*):
+```javascript
+await sock.sendQuotedChannel(jid, "Halo! Ini adalah pesan dengan kutipan saluran.", {
+    newsletterName: "Wanns-Baileys Official",
+    caption: "Verified Channel"
+});
+```
+
+### 5. Kirim Media Sekali Lihat / View Once (`sock.sendViewOnce`)
+Mengirim foto, video, atau audio sekali lihat hanya dengan satu baris perintah:
+```javascript
+await sock.sendViewOnce(jid, { image: { url: "https://example.com" } }, "Foto sekali lihat!");
+```
+
+### 6. Album Media Grid (`sock.sendAlbum`)
 Mengirim 2 hingga 10 foto/video sekaligus dalam satu tampilan gelembung album:
 ```javascript
 await sock.sendAlbum(jid, [
@@ -2640,7 +2687,7 @@ await sock.sendAlbum(jid, [
 ], { quoted: msg });
 ```
 
-### 3. Pemutar Audio / Lagu dengan Cover (`sock.sendRichAudio`)
+### 7. Pemutar Audio / Lagu dengan Cover (`sock.sendRichAudio`)
 Mengirim file audio/musik lengkap dengan gambar cover besar, judul lagu, dan nama artis:
 ```javascript
 await sock.sendRichAudio(jid, { url: "./lagu.mp3" }, {
@@ -2652,7 +2699,7 @@ await sock.sendRichAudio(jid, { url: "./lagu.mp3" }, {
 });
 ```
 
-### 4. Stiker Animasi Lottie (`sock.sendLottieSticker`)
+### 8. Stiker Animasi Lottie (`sock.sendLottieSticker`)
 Mengirim stiker animasi vektor JSON/TGS asli WhatsApp yang ringan dan jernih:
 ```javascript
 import fs from "fs";
@@ -2661,7 +2708,7 @@ const lottieBuffer = fs.readFileSync("./stiker-animasi.json");
 await sock.sendLottieSticker(jid, lottieBuffer, { quoted: msg });
 ```
 
-### 5. Lokasi Live Real-Time (`sock.sendLiveLocation`)
+### 9. Lokasi Live Real-Time (`sock.sendLiveLocation`)
 Mengirim titik lokasi langsung bergerak (*live location*) lengkap dengan durasi aktif (dalam detik):
 ```javascript
 await sock.sendLiveLocation(jid, -7.2575, 112.7521, {
@@ -2671,13 +2718,12 @@ await sock.sendLiveLocation(jid, -7.2575, 112.7521, {
 });
 ```
 
-### 6. Persetujuan Anggota Grup Massal (`sock.groupRequestParticipantsUpdateAll`)
+### 10. Persetujuan Anggota Grup Massal (`sock.groupRequestParticipantsUpdateAll`)
 Menerima (`"approve"`) atau menolak (`"reject"`) seluruh permintaan masuk grup yang tertunda sekaligus:
 ```javascript
 const hasil = await sock.groupRequestParticipantsUpdateAll(groupJid, "approve");
 console.log(`Berhasil memproses ${hasil.processed} anggota.`);
 ```
-
 ---
 
 
@@ -3040,7 +3086,7 @@ npm install wanns-baileys
 Langsung dari GitHub:
 
 ```bash
-npm install github:Plenger-final/wanns-baileys
+npm install wanns-baileys
 ```
 
 > Butuh **Node.js 20+** — dicek saat import dengan pesan error yang jelas (tanpa install script: paket ini sengaja **nol** hook `preinstall`/`postinstall`, jadi `npm ci --ignore-scripts` dan kebijakan supply-chain ketat langsung jalan).
