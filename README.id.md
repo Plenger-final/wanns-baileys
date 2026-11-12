@@ -72,7 +72,7 @@ Tombol, native flow, carousel, kartu AIRich, poll, channel, VoIP, dan **140+ uti
 
 > **Mulai** &nbsp;›&nbsp; [Instalasi](#instalasi) · [Mulai cepat](#mulai-cepat) · [Ringkasan](#ringkasan) · [Instalasi lengkap](#-instalasi) · [Autentikasi](#-autentikasi) · [Backend store](#-backend-store)
 >
-> **Isi paket** &nbsp;›&nbsp; [Perbandingan](#-perbandingan) · [Fitur](#-fitur) · [Peningkatan eksklusif J.AP](#-peningkatan-eksklusif-wanns) · [Baru di v2.4.5](#-baru-di-v245)
+> **Isi paket** &nbsp;›&nbsp; [Perbandingan](#-perbandingan) · [Fitur](#-fitur) · [Peningkatan eksklusif Wanns](#-peningkatan-eksklusif-wanns) · [Baru di v2.4.5](#-baru-di-v245)
 >
 > **Pesan** &nbsp;›&nbsp; [Contoh pemakaian](#-contoh-pemakaian) · [Helper pesan](#-helper-pesan) · [Channel, riwayat & transkrip](#-channel-riwayat--transkrip) · [Kejar-tayang WA 2026](#-kejar-tayang-wa-2026)
 >
@@ -246,7 +246,7 @@ Posisi `wanns-baileys` dibanding library Baileys lain:
 
 ---
 
-## ✨ Peningkatan Eksklusif J.AP
+## ✨ Peningkatan Eksklusif Wanns
 
 ### Perbaikan Status Grup Audio
 Status audio memakai implementasi yang lebih kompatibel untuk menghindari error unsupported-version di klien WhatsApp lama.
@@ -326,7 +326,7 @@ npm install wanns-baileys
 Langsung dari GitHub:
 
 ```bash
-npm install github:Wanns/baileys
+npm install github:Plenger-final/wanns-baileys
 ```
 
 > Butuh **Node.js 20+** — dicek saat import dengan pesan error yang jelas (tanpa install script: paket ini sengaja **nol** hook `preinstall`/`postinstall`, jadi `npm ci --ignore-scripts` dan kebijakan supply-chain ketat langsung jalan).
@@ -1174,7 +1174,7 @@ import { exportChatAsText, exportChatAsCSV, chatStatistics } from 'wanns-baileys
 
 // messages: WAMessage[] dari store / cache anti-delete / messages.upsert
 console.log(exportChatAsText(messages))
-// 14/09/2026, 10.32 - J.AP: halo!
+// 14/09/2026, 10.32 - Wanns: halo!
 // 14/09/2026, 10.33 - Rina: <Media omitted>
 
 fs.writeFileSync('chat.csv', exportChatAsCSV(messages))
@@ -1423,12 +1423,12 @@ Wrapper level tinggi di atas fitur username WhatsApp (handle `@username` yang bi
 
 ```js
 // Cek ketersediaan + dapatkan saran kalau sudah dipakai
-const cek = await sock.checkUsername('J.AP')
-// { available: true, username: 'J.AP' }
+const cek = await sock.checkUsername('Wanns')
+// { available: true, username: 'Wanns' }
 // atau: { available: false, suggestions: [...], rejectionReasons: [...] }
 
 // Klaim username
-await sock.setUsername('J.AP', { source: sock.USERNAME_SOURCE.USER_INPUT })
+await sock.setUsername('Wanns', { source: sock.USERNAME_SOURCE.USER_INPUT })
 
 // Kunci dengan PIN supaya tidak bisa diganti tanpa PIN
 await sock.setUsernamePin('123456')
@@ -1474,7 +1474,7 @@ bot.command('!ping', async (ctx) => {
 bot.command('!sticker', async (ctx) => {
     if (!ctx.quoted?.imageMessage) return ctx.reply({ text: 'Reply gambar dengan !sticker' })
     // ctx.replySticker() mengurus konversi WebP untukmu
-    await ctx.replySticker(bufferGambar, { packname: 'J.AP Pack', author: 'kamu' })
+    await ctx.replySticker(bufferGambar, { packname: 'Wanns Pack', author: 'kamu' })
 })
 
 bot.onText(async (ctx) => {
@@ -2415,9 +2415,9 @@ Sejak v2.4.3 banner sekaligus jadi kartu kesehatan startup — wordmark gradien 
   ╭────────────────────────────────────────────────────────────────╮
   │ wanns-baileys v2.4.5   ● typed · extended · battle-tested    │
   │ WA Web 2.3000.1048680055   node 20.20.2 · linux/x64 · pid 1472 │
-  │ ⚡ anti-ban toolkit   🛡️ bug-shield   📚 github.com/Wanns/baileys │
+  │ ⚡ anti-ban toolkit   🛡️ bug-shield   📚 github.com/Plenger-final/wanns-baileys │
   ╰────────────────────────────────────────────────────────────────╯
-   "from Termux to production."  — Made with 🍃 by J.AP
+   "from Termux to production."  — Made with 🍃 by Wanns
 ```
 
 </details>
@@ -2450,13 +2450,13 @@ Detail lengkap dan ketentuan lisensi per komponen: lihat [`NOTICE.md`](./NOTICE.
 <table>
 <tr>
 <td width="180" align="center">
-<img src="https://github.com/Wanns.png" width="160" alt="Avatar J.AP" style="border-radius:50%"/>
+<img src="https://github.com/Plenger-final.png" width="160" alt="Avatar Wanns" style="border-radius:50%"/>
 </td>
 <td>
 
-**J.AP**
+**Wanns**
 
-- GitHub: [github.com/Wanns](https://github.com/Wanns)
+- GitHub: [github.com/Plenger-final](https://github.com/Plenger-final)
 - Paket: [`wanns-baileys`](https://www.npmjs.com/package/wanns-baileys)
 - ✦ Merawat fork ini sendirian — issue & PR dipersilakan dan direview langsung.
 

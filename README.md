@@ -72,7 +72,7 @@ Bundled `.d.ts`, multi-backend auth, credential redaction, session tools — **1
 
 > **Getting started** &nbsp;›&nbsp; [Install](#install) · [Quick start](#quick-start) · [Overview](#overview) · [Installation](#-installation) · [Authentication](#-authentication) · [Store backends](#️-store-backends)
 >
-> **What's inside** &nbsp;›&nbsp; [Comparison](#-comparison) · [Built with](#-built-with) · [Features](#-features) · [Exclusive J.AP enhancements](#-exclusive-wanns-enhancements) · [New in v2.4.5](#-new-in-v245)
+> **What's inside** &nbsp;›&nbsp; [Comparison](#-comparison) · [Built with](#-built-with) · [Features](#-features) · [Exclusive Wanns enhancements](#-exclusive-wanns-enhancements) · [New in v2.4.5](#-new-in-v245)
 >
 > **Messaging** &nbsp;›&nbsp; [Usage examples](#-usage-examples) · [Message helpers](#-message-helpers) · [Channels, history & transcripts](#-channels-history--transcripts) · [WA 2026 catch-up](#-wa-2026-catch-up)
 >
@@ -266,7 +266,7 @@ How `wanns-baileys` stacks up against other Baileys libraries:
 
 ---
 
-## ✨ Exclusive J.AP Enhancements
+## ✨ Exclusive Wanns Enhancements
 
 ### Audio Group Status Fix
 Audio status uses a more compatible implementation to avoid unsupported-version errors on older WhatsApp clients.
@@ -346,7 +346,7 @@ npm install wanns-baileys
 Directly from GitHub:
 
 ```bash
-npm install github:Wanns/baileys
+npm install github:Plenger-final/wanns-baileys
 ```
 
 > Requires **Node.js 20+** — enforced at import time with a clear error (no install scripts: this package deliberately ships **zero** `preinstall`/`postinstall` hooks, so `npm ci --ignore-scripts` and strict supply-chain policies work out of the box).
@@ -1197,7 +1197,7 @@ import { exportChatAsText, exportChatAsCSV, chatStatistics } from 'wanns-baileys
 
 // messages: WAMessage[] from your store / anti-delete cache / messages.upsert
 console.log(exportChatAsText(messages))
-// 14/09/2026, 10.32 - J.AP: halo!
+// 14/09/2026, 10.32 - Wanns: halo!
 // 14/09/2026, 10.33 - Rina: <Media omitted>
 
 fs.writeFileSync('chat.csv', exportChatAsCSV(messages))
@@ -1446,12 +1446,12 @@ High-level wrappers around WhatsApp's username feature (the `@username` handle y
 
 ```js
 // Check availability + get suggestions if taken
-const check = await sock.checkUsername('J.AP')
-// { available: true, username: 'J.AP' }
+const check = await sock.checkUsername('Wanns')
+// { available: true, username: 'Wanns' }
 // or: { available: false, suggestions: [...], rejectionReasons: [...] }
 
 // Claim a username
-await sock.setUsername('J.AP', { source: sock.USERNAME_SOURCE.USER_INPUT })
+await sock.setUsername('Wanns', { source: sock.USERNAME_SOURCE.USER_INPUT })
 
 // Lock it behind a PIN so it can't be changed without one
 await sock.setUsernamePin('123456')
@@ -1497,7 +1497,7 @@ bot.command('!ping', async (ctx) => {
 bot.command('!sticker', async (ctx) => {
     if (!ctx.quoted?.imageMessage) return ctx.reply({ text: 'Reply to an image with !sticker' })
     // ctx.replySticker() handles the WebP conversion for you
-    await ctx.replySticker(imageBuffer, { packname: 'J.AP Pack', author: 'you' })
+    await ctx.replySticker(imageBuffer, { packname: 'Wanns Pack', author: 'you' })
 })
 
 bot.onText(async (ctx) => {
@@ -2437,9 +2437,9 @@ Since v2.4.3 the banner doubles as a startup health card — gradient wordmark p
   ╭────────────────────────────────────────────────────────────────╮
   │ wanns-baileys v2.4.5   ● typed · extended · battle-tested    │
   │ WA Web 2.3000.1048680055   node 20.20.2 · linux/x64 · pid 1472 │
-  │ ⚡ anti-ban toolkit   🛡️ bug-shield   📚 github.com/Wanns/baileys │
+  │ ⚡ anti-ban toolkit   🛡️ bug-shield   📚 github.com/Plenger-final/wanns-baileys │
   ╰────────────────────────────────────────────────────────────────╯
-   "from Termux to production."  — Made with 🍃 by J.AP
+   "from Termux to production."  — Made with 🍃 by Wanns
 ```
 
 </details>
@@ -2472,13 +2472,13 @@ Full details and license terms per component: see [`NOTICE.md`](./NOTICE.md).
 <table>
 <tr>
 <td width="180" align="center">
-<img src="https://github.com/Wanns.png" width="160" alt="J.AP avatar" style="border-radius:50%"/>
+<img src="https://github.com/Plenger-final.png" width="160" alt="Wanns avatar" style="border-radius:50%"/>
 </td>
 <td>
 
-**J.AP**
+**Wanns**
 
-- GitHub: [github.com/Wanns](https://github.com/Wanns)
+- GitHub: [github.com/Plenger-final](https://github.com/Plenger-final)
 - Package: [`wanns-baileys`](https://www.npmjs.com/package/wanns-baileys)
 - ✦ Maintains this fork solo — issues & PRs are welcome and reviewed personally.
 
@@ -2567,7 +2567,7 @@ Use responsibly and follow WhatsApp Terms of Service.
 
 ### V4
 
-- Kept the existing J.AP custom MessageBuilder classes and AIRich implementation intact.
+- Kept the existing Wanns custom MessageBuilder classes and AIRich implementation intact.
 - Added `whatsapp-rust-bridge@0.5.5` as a runtime dependency. The library already dynamically imports this module for LT Hash/app-state and crypto helpers; declaring it prevents accidental missing-module fallbacks in normal installations.
 - Existing guarded fallbacks for platforms where the native bridge cannot load remain in place.
 - ESM-only package metadata is preserved; no CommonJS build is included.
