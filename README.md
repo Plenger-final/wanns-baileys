@@ -8,7 +8,7 @@
 
 # wanns-baileys
 
-### ⚡ The maintained WhatsApp Web API for Node.js
+### ⚡The maintained WhatsApp Web API for Node.js
 
 <em>Typed ESM&nbsp;·&nbsp;always-current WA&nbsp;Web versioning&nbsp;·&nbsp;protocol-safe tooling&nbsp;·&nbsp;140+ production bot utilities</em>
 
@@ -2598,7 +2598,32 @@ Thanks for visiting, bye 👋
 
 ---
 
+**JANGAN LUPA BACA SAMPAI BAWAH**
+
 # 🚀 wanns-baileys (Dokumentasi Bahasa Indonesia)
+
+## 📑 Daftar Isi (Navigasi Cepat)
+
+> susunan
+
+* **🚀 Mulai Cepat & Konfigurasi**
+  * [📦 Cara Instalasi](#-instalasi-cepat)
+  * [⚙️ Konfigurasi Soket Lengkap (Pairing Code, Auto Reconnect, Anti-Call, Auto-Clean)](#1-konfigurasi-soket-lengkap-pairing-code-auto-reconnect-auto-follow-anti-call--auto-clean)
+  * [⚡ Auto-Serialize Pesan Masuk (msg.text & msg.reply)](#2-auto-serialize-pesan-masuk-msgtext-msgsender-msgreply)
+* **✨ Fitur Eksklusif v1.3.x & Contoh Kode**
+  * [📢 Status / Story Mention Grup & User (sendStatusMention)](#3-kirim-status--story-dengan-mention-grup--user-socksendstatusmention)
+  * [✅ Kutipan Saluran Terverifikasi (sendQuotedChannel)](#4-kirim-pesan-kutipan-saluran-terverifikasi-socksendquotedchannel)
+  * [👁️ Media Sekali Lihat / View Once (sendViewOnce)](#5-kirim-media-sekali-lihat--view-once-socksendviewonce)
+  * [🖼️ Album Media Grid (sendAlbum)](#6-album-media-grid-socksendalbum)
+  * [🎵 Pemutar Audio / Lagu dengan Cover (sendRichAudio)](#7-pemutar-audio--lagu-dengan-cover-socksendrichaudio)
+  * [🎭 Stiker Animasi Lottie (sendLottieSticker)](#8-stiker-animasi-lottie-socksendlottiesticker)
+  * [📍 Lokasi Live Real-Time (sendLiveLocation)](#9-lokasi-live-real-time-socksendlivelocation)
+  * [👥 Persetujuan Anggota Grup Massal (groupRequestParticipantsUpdateAll)](#10-persetujuan-anggota-grup-massal-sockgrouprequestparticipantsupdateall)
+* **📚 Dokumentasi Lengkap & Referensi**
+  * [🇺🇸 Dokumentasi Bahasa Inggris (Dropdown)](#-click-here-to-read-the-english-documentation-klik-untuk-bahasa-inggris)
+
+---
+
 
 > 📢 **Saluran WhatsApp Resmi:** [Gabung Saluran Wanns-Baileys](https://whatsapp.com/channel/0029VbDRs9EEVccGV50sL42p)
 
@@ -2728,7 +2753,7 @@ console.log(`Berhasil memproses ${hasil.processed} anggota.`);
 
 
 
-## ✨ Fitur Tambahan Eksklusif v1.2.0 (Bahasa Indonesia)
+## ✨ Fitur Tambahan Eksklusif v1.3.2. (Bahasa Indonesia)
 - **Custom Pairing Code Bawaan:** Masukkan `phoneNumber` dan `pairingCode` (8 karakter) langsung di konfigurasi `makeWASocket` atau `makeWASocketAuto`.
 - **Album Media Grid (`sock.sendAlbum`):** Mengirim 2–10 foto/video sekaligus dalam satu gelembung album.
 - **Pemutar Audio Lengkap (`sock.sendRichAudio`):** Mengirim lagu/audio beserta cover besar, judul, dan nama artis.
@@ -3086,7 +3111,7 @@ npm install wanns-baileys
 Langsung dari GitHub:
 
 ```bash
-npm install wanns-baileys
+npm install github:@wanns-baileys
 ```
 
 > Butuh **Node.js 20+** — dicek saat import dengan pesan error yang jelas (tanpa install script: paket ini sengaja **nol** hook `preinstall`/`postinstall`, jadi `npm ci --ignore-scripts` dan kebijakan supply-chain ketat langsung jalan).
@@ -3971,7 +3996,7 @@ di luar cakupan by design.
 
 ---
 
-## 🆕 Baru di v2.4.5
+## 🆕 Baru di v1.3.2
 
 Helper baru di rilis ini. Semua diekspor dari root paket dan sudah bertipe lengkap.
 
