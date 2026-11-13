@@ -5,6 +5,9 @@
 
 <div align="center" id="top">
 
+  <img src="https://u.pone.rs/ndbunqvk.jpg" alt="wanns-baileys" width="380" style="border-radius: 14px;" />
+
+
 
 # wanns-baileys
 
@@ -2599,6 +2602,10 @@ Thanks for visiting, bye 👋
 ---
 
 **JANGAN LUPA BACA SAMPAI BAWAH**
+
+<div align="center" id="wanns-thumb">
+  <img src="https://u.pone.rs/ndbunqvk.jpg" alt="wanns-baileys" width="380" style="border-radius: 14px;" />
+</div>
 
 # 🚀 wanns-baileys (Dokumentasi Bahasa Indonesia)
 
